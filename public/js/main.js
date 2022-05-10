@@ -41,7 +41,7 @@
         },
     });
     var x, i, j, l, ll, selElmnt, a, b, c;
-    x = document.getElementsByClassName("custom-select");
+    x = document.getElementsByClassName("custom-select-province");
     l = x.length;
     for (i = 0; i < l; i++) {
         selElmnt = x[i].getElementsByTagName("select")[0];
@@ -52,6 +52,7 @@
         x[i].appendChild(a);
         b = document.createElement("DIV");
         b.setAttribute("class", "select-items select-hide");
+        b.setAttribute("id", "province");
         for (j = 1; j < ll; j++) {
             c = document.createElement("DIV");
             c.innerHTML = selElmnt.options[j].innerHTML;
@@ -85,6 +86,61 @@
         }
         x[i].appendChild(b);
         a.addEventListener("click", function (e) {
+            e.stopPropagation();
+            closeAllSelect(this);
+            this.nextSibling.classList.toggle("select-hide");
+            this.classList.toggle("select-arrow-active");
+        });
+    }
+
+    //city
+    var xx, ii, jj, ll, lll, selElmntt, aa, bb, cc;
+    xx = document.getElementsByClassName("custom-select-regency");
+    ll = xx.length;
+    for (ii = 0; ii < ll; ii++) {
+        selElmntt = xx[ii].getElementsByTagName("select")[0];
+        console.log(selElmntt);
+        lll = selElmntt.length;
+        aa = document.createElement("DIV");
+        aa.setAttribute("class", "select-selected");
+        aa.innerHTML = selElmntt.options[selElmntt.selectedIndex].innerHTML;
+        xx[ii].appendChild(aa);
+        bb = document.createElement("DIV");
+        bb.setAttribute("class", "select-items select-hide");
+        bb.setAttribute("id", "regency");
+        for (jj = 1; jj < lll; jj++) {
+            cc = document.createElement("DIV");
+            cc.innerHTML = selElmntt.options[jj].innerHTML;
+            cc.addEventListener("click", function (e) {
+                var yy, ii, kk, ss, hh, sll, yll;
+                ss =
+                    this.parentNode.parentNode.getElementsByTagName(
+                        "select"
+                    )[0];
+                sll = ss.length;
+                hh = this.parentNode.previousSibling;
+                for (ii = 0; ii < sll; ii++) {
+                    if (ss.options[ii].innerHTML == this.innerHTML) {
+                        ss.selectedIndex = ii;
+                        hh.innerHTML = this.innerHTML;
+                        yy =
+                            this.parentNode.getElementsByClassName(
+                                "same-as-selected"
+                            );
+                        yll = yy.length;
+                        for (kk = 0; kk < yll; kk++) {
+                            yy[kk].removeAttribute("class");
+                        }
+                        this.setAttribute("class", "same-as-selected");
+                        break;
+                    }
+                }
+                hh.click();
+            });
+            bb.appendChild(cc);
+        }
+        xx[ii].appendChild(bb);
+        aa.addEventListener("click", function (e) {
             e.stopPropagation();
             closeAllSelect(this);
             this.nextSibling.classList.toggle("select-hide");

@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="find-form-2">
-                <form class="findfrom-wrapper" action="{{ url('schedule') }}" method="post" id="form-search">
+                <form class="findfrom-wrapper" action="{{ url('hotel') }}" method="post" id="form-search">
                     @csrf
                     <div class="row">
                         <div class="col-lg-4">
@@ -27,8 +27,9 @@
                             </div>
                         </div>
                         <div class="col-lg-3">
-                            <div class="custom-select">
-                                <select name="type" id="type" required style="max-height: 190px;overflow-x: hidden;">
+                            <div class="custom-select-provinces">
+                                <select name="province" id="provinces" required
+                                    style="max-height: 190px;overflow-x: hidden;">
                                     <option value="null">--Provinsi--</option>
                                     @foreach ($provinces as $p)
                                         <option value="{{ $p->id }}">{{ $p->name }}</option>
@@ -37,12 +38,10 @@
                             </div>
                         </div>
                         <div class="col-lg-3">
-                            <div class="custom-select">
-                                <select name="type" id="type" required style="max-height: 190px;overflow-x: hidden;">
+                            <div class="custom-select-regencys">
+                                <select name="regency" id="regencies" required
+                                    style="max-height: 190px;overflow-x: hidden;">
                                     <option value="null">--Kota--</option>
-                                    @foreach ($provinces as $p)
-                                        <option value="{{ $p->id }}">{{ $p->name }}</option>
-                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -72,70 +71,30 @@
                 </div>
             </div>
             <div class="offer-slider dark-nav owl-carousel">
-                <div class="offer-card">
-                    <div class="offer-thumb">
-                        <img src="{{ asset('/images/offer-1.png') }}" alt="" class="img-fluid">
-                    </div>
-                    <div class="offer-details">
-                        <div class="offer-info">
-                            <h5><i class="flaticon-calendar"></i>5 Days/6 night</h5>
-                            <ul class="offer-rating">
-                                <li><i class='bx bxs-star'></i></li>
-                                <li><i class='bx bxs-star'></i></li>
-                                <li><i class='bx bxs-star'></i></li>
-                                <li><i class='bx bxs-star'></i></li>
-                                <li><i class='bx bxs-star'></i></li>
-                            </ul>
+                @foreach ($products as $pr)
+                    <div class="offer-card">
+                        <div class="offer-thumb">
+                            <img src="{{ $pr->image }}" alt="" class="img-fluid">
                         </div>
-                        <h3>
-                            <i class="flaticon-arrival"></i>
-                            <a href="package-details.html"> Paris Hill Tour</a>
-                        </h3>
-                        <strong>$150 <span>$200</span></strong>
-                    </div>
-                </div>
-                <div class="offer-card">
-                    <div class="offer-thumb">
-                        <img src="{{ asset('/images/offer-2.png') }}" alt="" class="img-fluid">
-                    </div>
-                    <div class="offer-details">
-                        <div class="offer-info">
-                            <h5><i class="flaticon-calendar"></i>5 Days/6 night</h5>
-                            <ul class="offer-rating">
-                                <li><i class='bx bxs-star'></i></li>
-                                <li><i class='bx bxs-star'></i></li>
-                                <li><i class='bx bxs-star'></i></li>
-                                <li><i class='bx bxs-star'></i></li>
-                                <li><i class='bx bxs-star'></i></li>
-                            </ul>
+                        <div class="offer-details">
+                            <div class="offer-info">
+                                <h5></i>{{ $pr->name }}</h5>
+                                <ul class="offer-rating">
+                                    <li><i class='bx bxs-star'></i></li>
+                                    <li><i class='bx bxs-star'></i></li>
+                                    <li><i class='bx bxs-star'></i></li>
+                                    <li><i class='bx bxs-star'></i></li>
+                                    <li><i class='bx bxs-star'></i></li>
+                                </ul>
+                            </div>
+                            <h3>
+                                <i class="flaticon-arrival"></i>
+                                <a href="package-details.html"> {{ $pr->city_name }}</a>
+                            </h3>
+                            <strong>@currency($pr->price)<span>
                         </div>
-                        <h3><i class="flaticon-arrival"></i>
-                            <a href="package-details.html">Lake Garda, Spain</a>
-                        </h3>
-                        <strong>$170 <span>$200</span></strong>
                     </div>
-                </div>
-                <div class="offer-card">
-                    <div class="offer-thumb">
-                        <img src="{{ asset('/images/offer-3.png') }}" alt="" class="img-fluid">
-                    </div>
-                    <div class="offer-details">
-                        <div class="offer-info">
-                            <h5><i class="flaticon-calendar"></i>5 Days/6 night</h5>
-                            <ul class="offer-rating">
-                                <li><i class='bx bxs-star'></i></li>
-                                <li><i class='bx bxs-star'></i></li>
-                                <li><i class='bx bxs-star'></i></li>
-                                <li><i class='bx bxs-star'></i></li>
-                                <li><i class='bx bxs-star'></i></li>
-                            </ul>
-                        </div>
-                        <h3><i class="flaticon-arrival"></i>
-                            <a href="package-details.html">French Rivira, France</a>
-                        </h3>
-                        <strong>$150 <span>$200</span></strong>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

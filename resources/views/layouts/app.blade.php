@@ -287,6 +287,7 @@
     <script src="/js/wow.min.js"></script>
     <script src="/js/typed.js"></script>
     <script src="/js/main.js"></script>
+    <script src="/js/region.js"></script>
 
 </body>
 

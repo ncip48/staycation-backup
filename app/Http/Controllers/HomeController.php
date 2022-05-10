@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -28,8 +29,9 @@ class HomeController extends Controller
             ->table('provinces')
             ->select('*')
             ->get();
-        $data['product'] = 0;
+        $data['product'] = Product::count();
         $data['transaction'] = 0;
+        $data['products'] = Product::all()->take(3);
         return view('home', $data);
     }
 }
