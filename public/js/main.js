@@ -405,7 +405,7 @@
     var element = $(".element");
     $(function () {
         element.typed({
-            strings: ["Hotel", "Villa", "Oyo", "Penginapan"],
+            strings: ["Hotel", "Villa", "Penginapan"],
             typeSpeed: 190,
             loop: true,
         });

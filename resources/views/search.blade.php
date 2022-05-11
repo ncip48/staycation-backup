@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Hotel')
+@section('title', 'Search')
 
 @section('content')
     <div class="breadcrumb-area">
@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="breadcrumb-wrap">
-                        <h2>Hotel di {{ ucfirst(strtolower(trans($city->name))) }}</h2>
+                        <h2>Hasil Pencarian {{ $keyword }}</h2>
                         <ul class="breadcrumb-links">
                             <li>
                                 <a href="/">Home</a>
@@ -25,14 +25,6 @@
     <div class="package-area pt-120">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <div class="section-head pb-45">
-                        <h5>Choose Your Package</h5>
-                        <h2>Select Your best Package For Your Travel</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
                 @foreach ($products as $pr)
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="package-card">
@@ -43,7 +35,7 @@
                                 <div class="package-info">
                                     <h3 style="padding: 0px">
                                         <a
-                                            href="{{ url('detail?id=' . \Illuminate\Support\Facades\Crypt::encrypt($pr->id)) . '&date=' . $date }}">{{ $pr->name }}</a>
+                                            href="{{ url('hotel/' . \Illuminate\Support\Facades\Crypt::encrypt($pr->id)) }}">{{ $pr->name }}</a>
                                     </h3>
                                     <h5>@currency($pr->price)</h5>
                                 </div>

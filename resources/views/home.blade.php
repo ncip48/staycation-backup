@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="find-form-2">
-                <form class="findfrom-wrapper" action="{{ url('hotel') }}" method="post" id="form-search">
+                <form class="findfrom-wrapper" action="{{ url('hotel') }}" method="get" id="form-search">
                     @csrf
                     <div class="row">
                         <div class="col-lg-4">
@@ -78,19 +78,20 @@
                         </div>
                         <div class="offer-details">
                             <div class="offer-info">
-                                <h5></i>{{ $pr->name }}</h5>
-                                <ul class="offer-rating">
+                                <h3><a href="{{ url('hotel/' . \Illuminate\Support\Facades\Crypt::encrypt($pr->id)) }}">
+                                        {{ $pr->name }}</a></h3>
+                                {{-- <ul class="offer-rating">
                                     <li><i class='bx bxs-star'></i></li>
                                     <li><i class='bx bxs-star'></i></li>
                                     <li><i class='bx bxs-star'></i></li>
                                     <li><i class='bx bxs-star'></i></li>
                                     <li><i class='bx bxs-star'></i></li>
-                                </ul>
+                                </ul> --}}
                             </div>
-                            <h3>
+                            <h5>
                                 <i class="flaticon-arrival"></i>
-                                <a href="package-details.html"> {{ $pr->city_name }}</a>
-                            </h3>
+                                </i>{{ $pr->city_name }}
+                            </h5>
                             <strong>@currency($pr->price)<span>
                         </div>
                     </div>
@@ -145,7 +146,7 @@
                             <img src="{{ asset('/images/e-3.png') }}" alt="" class="img-fluid">
                         </div>
                         <div class="achieve-info">
-                            <h5>5+ year of travel experience</h5>
+                            <h5>Rating 5 Review</h5>
                             <div class="achieve-icon">
                                 <i class="flaticon-experience"></i>
                             </div>
@@ -159,7 +160,7 @@
                             <img src="{{ asset('/images/e-4.png') }}" alt="" class="img-fluid">
                         </div>
                         <div class="achieve-info">
-                            <h5>85% of our traveller happy</h5>
+                            <h5>{{ $user }} Pelanggan</h5>
                             <div class="achieve-icon">
                                 <i class="flaticon-traveller"></i>
                             </div>

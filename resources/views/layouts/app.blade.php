@@ -152,13 +152,13 @@
                     </div>
                 </div>
             </div>
-            <form action="{{ url('searchbykode') }}" method="POST" style="margin:0px">
+            <form action="{{ url('search') }}" method="get" style="margin:0px">
                 @csrf
                 <div class="main-searchbar">
                     <div class="searchbar-close">
                         <i class="bx bx-x"></i>
                     </div>
-                    <input type="text" placeholder="Kode Booking......" name="kode">
+                    <input type="text" placeholder="Nama Hotel......" name="keyword">
                     <button type="submit" class="searchbar-icon" style="border:none;outline: none;">
                         <i class="bx bx-search"></i>
                     </button>

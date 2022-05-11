@@ -22,4 +22,6 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
-Route::post('/hotel', [App\Http\Controllers\ProductController::class, 'hotel'])->name('hotel');
+Route::get('/hotel', [App\Http\Controllers\ProductController::class, 'hotel'])->name('hotel');
+Route::get('/detail', [App\Http\Controllers\ProductController::class, 'detail'])->name('detail');
+Route::get('/search', [App\Http\Controllers\ProductController::class, 'search'])->name('search');
