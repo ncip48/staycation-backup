@@ -32,6 +32,6 @@ class SiteSeeder extends Seeder
             'open' => '08.00 - 17.00',
             'close' => 'Hari Besar',
             'created_at' => now(),
-        ])
+        ]);
     }
 }
