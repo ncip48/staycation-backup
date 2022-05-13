@@ -25,7 +25,7 @@
     <div class="package-area pt-120">
         <div class="container">
             <div class="row">
-                @foreach ($products as $pr)
+                @forelse ($products as $pr)
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="package-card">
                             <div class="package-thumb">
@@ -35,7 +35,7 @@
                                 <div class="package-info">
                                     <h3 style="padding: 0px">
                                         <a
-                                            href="{{ url('hotel/' . \Illuminate\Support\Facades\Crypt::encrypt($pr->id)) }}">{{ $pr->name }}</a>
+                                            href="{{ url('detail?id=' . \Illuminate\Support\Facades\Crypt::encrypt($pr->id)) . '&date=' . $date }}">{{ $pr->name }}</a>
                                     </h3>
                                     <h5>@currency($pr->price)</h5>
                                 </div>
@@ -45,7 +45,15 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="row d-flex justify-content-center">
+                            <img src="https://i.ibb.co/C1kCxZN/Vector-Search-PNG-Free-Image.png" alt=""
+                                class="img-fluid" style="height: 19rem;width:19rem">
+                            <strong class="text-center">Hotel Not Found :(</strong>
+                        </div>
+                    </div>
+                @endforelse
             </div>
         </div>
     </div>

@@ -1,11 +1,17 @@
+@php
+$site = App\Models\Site::first();
+@endphp
+
 <html lang="en">
 
 <head>
     <title>@yield('title')</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="{{ asset('/images/favicon.png') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ $site->favicon }}">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link rel="stylesheet"
+        href="https://raw.githubusercontent.com/nashio/star-rating-svg/master/src/css/star-rating-svg.css">
 </head>
 
 <body>
@@ -67,8 +73,8 @@
                                 <li>
                                     <a href="/">Home</a>
                                 </li>
-                                <li><a href="about.html">About us </a></li>
-                                <li><a href="destination.html">Destinations </a></li>
+                                <li><a href="{{ url('about') }}">About us </a></li>
+                                {{-- <li><a href="destination.html">Destinations </a></li>
                                 <li class="has-child-menu">
                                     <a href="javascript:void(0)">Tour Package</a>
                                     <i class="fl flaticon-plus">+</i>
@@ -102,8 +108,8 @@
                                         <li><a href="404.html" class="sub-item">error page </a></li>
                                         <li><a href="faq.html" class="sub-item">FAQ page </a></li>
                                     </ul>
-                                </li>
-                                <li><a href="contact.html">Contact Us </a></li>
+                                </li> --}}
+                                <li><a href="{{ url('contact') }}">Contact Us </a></li>
                             </ul>
                             <div class="navbar-icons-2">
                                 <div class="searchbar-open">
@@ -159,6 +165,7 @@
                         <i class="bx bx-x"></i>
                     </div>
                     <input type="text" placeholder="Nama Hotel......" name="keyword">
+                    <input type="hidden" value="{{ date('Y-m-d') }}" name="date">
                     <button type="submit" class="searchbar-icon" style="border:none;outline: none;">
                         <i class="bx bx-search"></i>
                     </button>
@@ -176,22 +183,22 @@
                 <div class="col-lg-4 col-md-12">
                     <div class="footer-info">
                         <div class="footer-logo">
-                            <img src="{{ asset('images/logo-2.png') }}" alt="" class="img-fluid">
+                            <img src="{{ $site->logo }}" alt="" class="img-fluid">
                         </div>
-                        <p>Lorem ipsum, dolor sit amet consectetur
-                            adipisicing elit. Aliquid maxime aut ut
-                            voluptate
-                            dolorum nisi ducimus ratione</p>
+                        <p>{{ $site->description }}</p>
                         <div class="footer-social-icons">
                             <h5>Follow Us:</h5>
                             <ul>
-                                <li><a href="#"><i class="bx bxl-facebook"></i></a>
+                                <li><a href="{{ $site->facebook }}" target="_blank"><i
+                                            class="bx bxl-facebook"></i></a>
                                 </li>
-                                <li><a href="#"><i class="bx bxl-instagram"></i></a>
+                                <li><a href="{{ $site->instagram }}" target="_blank"><i
+                                            class="bx bxl-instagram"></i></a>
                                 </li>
-                                <li><a href="#"><i class="bx bxl-twitter"></i></a>
+                                <li><a href="{{ $site->twitter }}" target="_blank"><i class="bx bxl-twitter"></i></a>
                                 </li>
-                                <li><a href="#"><i class="bx bxl-dribbble"></i></a>
+                                <li><a href="{{ $site->whatsapp }}" target="_blank"><i
+                                            class="bx bxl-whatsapp"></i></a>
                                 </li>
                             </ul>
                         </div>
@@ -201,27 +208,25 @@
                     <div class="row">
                         <div class="col-lg-5 col-md-5 col-sm-7">
                             <div class="footer-links">
-                                <h5 class="widget-title">Contact us</h5>
+                                <h5 class="widget-title">Hubungi Kami</h5>
                                 <div class="contact-box">
                                     <span><i class="bx bx-phone"></i></span>
                                     <div>
-                                        <a href="tel:+01852-1265122">+01852-1265122</a>
-                                        <a href="tel:+01852-1265122">+01852-1265122</a>
+                                        <a href="tel:{{ $site->phone }}">{{ $site->phone }}</a>
+                                        <a href="tel:{{ $site->phon2 }}">{{ $site->phone2 }}</a>
                                     </div>
                                 </div>
                                 <div class="contact-box">
                                     <span><i class="bx bx-mail-send"></i></span>
                                     <div>
-                                        <a href="mailto:info@example.com">info@example.com</a>
-                                        <a href="mailto:support@example.com">support@example.com</a>
+                                        <a href="mailto:{{ $site->email }}">{{ $site->email }}</a>
+                                        <a href="mailto:{{ $site->email2 }}">{{ $site->email2 }}</a>
                                     </div>
                                 </div>
                                 <div class="contact-box">
                                     <span><i class="bx bx-location-plus"></i></span>
                                     <div>
-                                        <a href="#">2752 Willison Street
-                                            <br>
-                                            Eagan, United State</a>
+                                        <a href="#">{{ $site->address }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -231,14 +236,11 @@
                                 <h5 class="widget-title">support</h5>
                                 <div class="category-list">
                                     <ul>
-                                        <li><a href="contact.html">Contact
+                                        <li><a href="{{ url('contact') }}">Contact
                                                 us</a></li>
-                                        <li><a href="about.html">About
+                                        <li><a href="{{ url('about') }}">About
                                                 us</a></li>
-                                        <li><a href="#">Services</a></li>
-                                        <li><a href="blog.html">our
-                                                Blogs</a></li>
-                                        <li><a href="#">terms and
+                                        <li><a href="{{ url('terms-conditions') }}">terms and
                                                 conditions</a></li>
                                     </ul>
                                 </div>
@@ -267,7 +269,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="copyrigth-area">
-                        <p>Copyright 2021 <a href="#">TourX</a> | Design By
+                        <p>Copyright {{ date('Y') }} <a href="/">{{ $site->name }}</a> | Design By
                             <a href="#">Egens Lab</a>
                         </p>
                     </div>
@@ -288,6 +290,7 @@
     <script src="/js/typed.js"></script>
     <script src="/js/main.js"></script>
     <script src="/js/region.js"></script>
+    <script src="/js/star-rating.js"></script>
 
 </body>
 

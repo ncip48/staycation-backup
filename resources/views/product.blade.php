@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="breadcrumb-wrap">
-                        <h2>Hotel di {{ ucfirst(strtolower(trans($city->name))) }}</h2>
+                        <h2>Hotel di {{ ucfirst(strtolower(trans($city))) }}</h2>
                         <ul class="breadcrumb-links">
                             <li>
                                 <a href="/">Home</a>
@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="row">
-                @foreach ($products as $pr)
+                @forelse ($products as $pr)
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="package-card">
                             <div class="package-thumb">
@@ -53,7 +53,15 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="row d-flex justify-content-center">
+                            <img src="https://i.ibb.co/C1kCxZN/Vector-Search-PNG-Free-Image.png" alt=""
+                                class="img-fluid" style="height: 19rem;width:19rem">
+                            <strong class="text-center">Hotel Not Found :(</strong>
+                        </div>
+                    </div>
+                @endforelse
             </div>
         </div>
     </div>

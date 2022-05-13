@@ -19,6 +19,7 @@ class TambahKolomDiTabelUser extends Migration
             $table->string('phone', 20)->after('dob')->nullable();
             $table->text('address')->after('phone')->nullable();
             $table->text('picture')->after('address')->nullable();
+            $table->integer('role', 20)->after('picture')->nullable();
         });
     }
 

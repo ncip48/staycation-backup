@@ -46,8 +46,8 @@
                                                     class="col-form-label text-md-end">{{ __('Username') }}</label>
                                                 <input id="username" type="text"
                                                     class="form-control @error('email') is-invalid @enderror"
-                                                    name="username" value="{{ old('username') }}" required
-                                                    autocomplete="username" autofocus>
+                                                    name="username" value="{{ old('username') }}" autocomplete="username"
+                                                    autofocus>
                                                 @error('username')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -59,7 +59,7 @@
                                                     class="col-form-label text-md-end">{{ __('Password') }}</label>
                                                 <input id="password" type="password"
                                                     class="form-control @error('password') is-invalid @enderror"
-                                                    name="password" required autocomplete="password">
+                                                    name="password" autocomplete="password">
                                                 @error('password')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>

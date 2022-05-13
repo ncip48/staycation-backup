@@ -632,7 +632,7 @@ a {
     font-size: 28px;
     line-height: 38px;
 }
-.custom-select.package-option,  {
+.custom-select.package-option {
     position: relative;
     width: 255px;
     float: right;
@@ -661,19 +661,25 @@ a {
 .custom-select.languege-select .select-selected::before {
     right: -14px;
 }
-.custom-select.languege-select .select-items, .custom-select-province.languege-select .select-items {
+.custom-select.languege-select .select-items,
+.custom-select-province.languege-select .select-items {
     left: -20px;
     margin-top: 14px;
     width: 70px;
 }
-.custom-select.languege-select .select-items div, .custom-select-province.languege-select .select-items div {
+.custom-select.languege-select .select-items div,
+.custom-select-province.languege-select .select-items div {
     padding: 8px 18px;
 }
-.custom-select, .custom-select-province, .custom-select-regency {
+.custom-select,
+.custom-select-province,
+.custom-select-regency {
     position: relative;
     width: 100%;
 }
-.custom-select select, .custom-select-province select, .custom-select-regency select {
+.custom-select select,
+.custom-select-province select,
+.custom-select-regency select {
     display: none;
 }
 .select-selected {
@@ -3164,7 +3170,7 @@ header > .header-area .nav-right {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     border-radius: 6px;
-    color: #a5a5a5;
+    /* color: #a5a5a5; */
 }
 .package-d-sidebar .p-sidebar-form input::-webkit-input-placeholder,
 .package-d-sidebar .p-sidebar-form textarea::-webkit-input-placeholder,
@@ -3996,7 +4002,15 @@ li.package-card-sm .package-info h5 span {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    margin-bottom: 40px;
+    /* margin-bottom: 40px; */
+    margin-bottom: 20px;
+}
+.my-rating-r0,
+.my-rating-r1,
+.my-rating-r2,
+.my-rating-r3,
+.my-rating-r4 {
+    margin-bottom: 10px;
 }
 .package-details
     .package-tab
@@ -5304,7 +5318,6 @@ li.package-card-sm .package-info h5 span {
     font-size: 0.75rem;
 }
 
-
 .nav-tabs {
     border-bottom: none;
 }
@@ -5458,7 +5471,7 @@ li.package-card-sm .package-info h5 span {
     margin-right: 30px;
     font-size: 22px;
     position: absolute;
-    left: 25px
+    left: 25px;
 }
 
 .profile-details {
@@ -5511,7 +5524,8 @@ li.package-card-sm .package-info h5 span {
     padding: 30px;
 }
 
-.booking-details .content-booking {}
+.booking-details .content-booking {
+}
 
 .booking-details .booking-info .booking-date {
     width: 170px;
@@ -5717,11 +5731,12 @@ li.package-card-sm .package-info h5 span {
     width: 50px;
     line-height: 50px;
     text-align: center;
-    -webkit-transition: .3s;
-    transition: .3s;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
 }
 
-.single-contact:hover .contact-icon i {}
+.single-contact:hover .contact-icon i {
+}
 
 .single-contact {
     position: relative;
@@ -5734,8 +5749,8 @@ li.package-card-sm .package-info h5 span {
     margin-top: 20px;
     text-transform: capitalize;
     font-weight: 600;
-    -webkit-transition: .3s;
-    transition: .3s;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
 }
 
 .contact-form {
@@ -5761,8 +5776,8 @@ li.package-card-sm .package-info h5 span {
     margin-bottom: 20px;
     border: 1px solid #ccc;
     background: #fff;
-    -webkit-transition: .3s;
-    transition: .3s;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
     font-family: "Roboto", sans-serif;
 }
 
@@ -5778,7 +5793,7 @@ li.package-card-sm .package-info h5 span {
     display: block;
     border: 0px;
     width: 100%;
-    height: 50px!important;
+    height: 50px !important;
     font-size: 16px;
     line-height: 1.42857143;
     color: #bbb;
@@ -5790,8 +5805,8 @@ li.package-card-sm .package-info h5 span {
     padding: 10px 110px 14px 50px;
     border: 1px solid #ccc;
     background: #fff;
-    -webkit-transition: .3s;
-    transition: .3s;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
     font-family: "Roboto", sans-serif;
 }
 
@@ -5801,7 +5816,7 @@ li.package-card-sm .package-info h5 span {
     box-shadow: none;
 }
 
-.contact-form input[type='submit'] {
+.contact-form input[type="submit"] {
     display: inline-block;
     color: #fff;
     padding: 12px 25px;
@@ -5815,7 +5830,7 @@ li.package-card-sm .package-info h5 span {
     font-family: "Raleway", sans-serif;
 }
 
-.contact-form input[type='submit']:hover {
+.contact-form input[type="submit"]:hover {
     background-color: #fff;
     color: #ff7f47;
 }
@@ -5824,12 +5839,17 @@ li.package-card-sm .package-info h5 span {
     float: right;
 }
 
-.btn.active.focus, .btn.active:focus, .btn.focus, .btn.focus:active, .btn:active:focus, .btn:focus {
+.btn.active.focus,
+.btn.active:focus,
+.btn.focus,
+.btn.focus:active,
+.btn:active:focus,
+.btn:focus {
     outline: none;
 }
 
 .success {
-    background: #50B948 none repeat scroll 0 0;
+    background: #50b948 none repeat scroll 0 0;
     color: #fff;
     font-weight: 700;
     padding: 20px;
@@ -5858,11 +5878,11 @@ li.package-card-sm .package-info h5 span {
     align-items: center;
 }
 
-.contact-icon-box>i {
+.contact-icon-box > i {
     text-align: center;
 }
 
-.contact-icon-box>i {
+.contact-icon-box > i {
     position: absolute;
     left: 0;
     top: 50%;
@@ -5914,7 +5934,7 @@ li.package-card-sm .package-info h5 span {
 
 .title-separator.style-liner {
     width: 70px;
-    height: 6px
+    height: 6px;
 }
 
 .title-separator.style-icon {
@@ -5924,7 +5944,8 @@ li.package-card-sm .package-info h5 span {
     font-size: 20px;
 }
 
-.title-separator[class*="style-"]:after, .title-separator[class*="style-"]:before {
+.title-separator[class*="style-"]:after,
+.title-separator[class*="style-"]:before {
     content: "";
     position: absolute;
     top: 5px;
@@ -5954,7 +5975,8 @@ li.package-card-sm .package-info h5 span {
     transform: skewX(-10deg);
 }
 
-.title-separator.style-skew[class*="style-"]:after, .title-separator.style-skew[class*="style-"]:before {
+.title-separator.style-skew[class*="style-"]:after,
+.title-separator.style-skew[class*="style-"]:before {
     width: 80px;
     height: 4px;
     left: 20px;
@@ -5974,7 +5996,7 @@ li.package-card-sm .package-info h5 span {
     font-weight: 300;
 }
 
-.login-form input[type='submit'] {
+.login-form input[type="submit"] {
     display: inline-block;
     color: #fff;
     padding: 12px 25px;
@@ -5986,12 +6008,12 @@ li.package-card-sm .package-info h5 span {
     font-weight: 600;
 }
 
-.login-form input[type='submit']:hover {
+.login-form input[type="submit"]:hover {
     background: transparent;
     color: #000;
     border: 1px solid #ff7f47;
-    -webkit-transition: .3s;
-    transition: .3s;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
 }
 
 .login-form .login-btn {
@@ -6185,7 +6207,7 @@ Myaccount
     margin-right: 30px;
     font-size: 22px;
     position: absolute;
-    left: 25px
+    left: 25px;
 }
 
 .profile-details {
@@ -6238,7 +6260,8 @@ Myaccount
     padding: 30px;
 }
 
-.booking-details .content-booking {}
+.booking-details .content-booking {
+}
 
 .booking-details .booking-info .booking-date {
     width: 170px;

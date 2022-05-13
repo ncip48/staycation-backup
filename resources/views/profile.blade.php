@@ -40,12 +40,19 @@
                             <div class="head-profile">
                                 <h3>Profil Saya</h3>
                             </div>
+                            @if ($message = Session::get('success'))
+                                <div class="alert alert-success alert-dismissible show fade">
+                                    <div class="alert-body">
+                                        <p>{{ $message }}</p>
+                                    </div>
+                                </div>
+                            @endif
                             <div class="content-profile">
                                 <div class="row">
                                     <div class="col-lg-3 col-md-5">
                                         @php
                                             if (is_null($user->picture)) {
-                                                $foto = 'https://pngset.com/images/profile-pic-profil-ronde-hair-face-word-logo-transparent-png-70466.png';
+                                                $foto = 'https://www.seekpng.com/png/detail/428-4287240_no-avatar-user-circle-icon-png.png';
                                             } else {
                                                 $foto = $user->picture;
                                             }
@@ -114,8 +121,17 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 text-right mt-4">
-                                        <a href="#" class="button p-3">Edit Profile</a>
+                                    <div class="col-lg-3 col-md-5">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="text-right mt-4">
+                                                <a href="{{ url('edit-profile') }}" class="button p-3">Ganti
+                                                    Foto</a>
+                                            </div>
+                                            <div class="text-right mt-4">
+                                                <a href="{{ url('edit-profile') }}" class="button p-3">Edit
+                                                    Profile</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -124,338 +140,159 @@
                     <div class="tab-pane fade" id="nav-booking" role="tabpanel" aria-labelledby="nav-booking-tab">
                         <div class="booking-details">
                             <div class="head-booking">
-                                <h3>Trips You have Booked!</h3>
+                                <h3>Riwayat Booking</h3>
                             </div>
                             <div class="content-booking">
-                                <div class="booking-info">
-                                    <div class="row">
-                                        <div class="col-lg-2 col-md-12">
-                                            <div class="booking-date">
-                                                <p class="date">
-                                                    15
-                                                </p>
-                                                <p class="month">
-                                                    august
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-8 col-md-12">
-                                            <div class="booking-detail">
-                                                <h3>
-                                                    Restuarent Details
-                                                </h3>
-                                                <div class="detail-info">
-                                                    <div class="row">
-                                                        <div class="col-md-1">
-                                                            <i class="fa fa-calendar-check-o"></i>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <p>
-                                                                booking date:
-                                                            </p>
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            28:12:2021 at 3:20 AM
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="detail-info">
-                                                    <div class="row">
-                                                        <div class="col-md-1">
-                                                            <i class="fa fa-sticky-note"></i>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <p>
-                                                                booking details:
-                                                            </p>
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            28:12:2021 at 3:20 AM
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="detail-info">
-                                                    <div class="row">
-                                                        <div class="col-md-1">
-                                                            <i class="fa fa-user-secret"></i>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <p>
-                                                                client:
-                                                            </p>
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            Monica smith
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="detail-info">
-                                                    <div class="row">
-                                                        <div class="col-md-1">
-                                                            <i class="fa fa-envelope"></i>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <p>
-                                                                Email:
-                                                            </p>
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            example@example.com
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="detail-info">
-                                                    <div class="row">
-                                                        <div class="col-md-1">
-                                                            <i class="fa fa-phone"></i>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <p>
-                                                                Phone:
-                                                            </p>
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            +123-456-789
-                                                        </div>
-                                                    </div>
+                                @forelse ($bookings as $b)
+                                    @php
+                                        switch ($b->status) {
+                                            case 0:
+                                                $status = 'Menunggu Pembayaran';
+                                                $textclass = 'text-success';
+                                                break;
+                                            case 1:
+                                                $status = 'Sukses';
+                                                $textclass = 'text-success';
+                                                break;
+                                            case 2:
+                                                $status = 'Sedang Di Proses';
+                                                $textclass = 'text-success';
+                                                break;
+                                            case 3:
+                                                $status = 'Dibatalkan';
+                                                $textclass = 'text-danger';
+                                                break;
+                                            case 4:
+                                                $status = 'Pembayaran Kadaluarsa';
+                                                $textclass = 'text-danger';
+                                                break;
+                                            case 5:
+                                                $status = 'Konfirmasi Pembayaran';
+                                                $textclass = 'text-success';
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                    @endphp
+                                    <div class="booking-info">
+                                        <div class="row">
+                                            <div class="col-lg-2 col-md-12">
+                                                <div class="booking-date">
+                                                    <p class="date">
+                                                        @date($b->created_at)
+                                                    </p>
+                                                    <p class="month">
+                                                        @month($b->created_at)
+                                                    </p>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-2 col-md-12">
-                                            <div class="booking-action">
-                                                <a class="btn-message bookbtn" href="#">
-                                                    Mesage
-                                                </a>
-                                                <a class="btn-apreove bookbtn" href="#">
-                                                    Aprove
-                                                </a>
-                                                <a class="btn-cancle bookbtn" href="#">
-                                                    Cancle
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="booking-info">
-                                    <div class="row">
-                                        <div class="col-lg-2 col-md-12">
-                                            <div class="booking-date">
-                                                <p class="date">
-                                                    15
-                                                </p>
-                                                <p class="month">
-                                                    august
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-8 col-md-12">
-                                            <div class="booking-detail">
-                                                <h3>
-                                                    Restuarent Details
-                                                </h3>
-                                                <div class="detail-info">
-                                                    <div class="row">
-                                                        <div class="col-md-1">
-                                                            <i class="fa fa-calendar-check-o"></i>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <p>
-                                                                booking date:
-                                                            </p>
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            28:12:2021 at 3:20 AM
+                                            <div class="col-lg-8 col-md-12">
+                                                <div class="booking-detail">
+                                                    <div class="detail-info">
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <p>
+                                                                    code booking:
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-md-9">
+                                                                {{ $b->code_booking }}
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="detail-info">
-                                                    <div class="row">
-                                                        <div class="col-md-1">
-                                                            <i class="fa fa-sticky-note"></i>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <p>
-                                                                booking details:
-                                                            </p>
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            28:12:2021 at 3:20 AM
+                                                    <div class="detail-info">
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <p>
+                                                                    booking date:
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-md-9">
+                                                                @datetime($b->created_at)
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="detail-info">
-                                                    <div class="row">
-                                                        <div class="col-md-1">
-                                                            <i class="fa fa-user-secret"></i>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <p>
-                                                                client:
-                                                            </p>
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            Monica smith
+                                                    <div class="detail-info">
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <p>
+                                                                    booking details:
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-md-9">
+                                                                @dateonly($b->date_start) - @dateonly($b->date_end)
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="detail-info">
-                                                    <div class="row">
-                                                        <div class="col-md-1">
-                                                            <i class="fa fa-envelope"></i>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <p>
-                                                                Email:
-                                                            </p>
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            example@example.com
+                                                    <div class="detail-info">
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <p>
+                                                                    client:
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-md-9">
+                                                                {{ $b->name }}
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="detail-info">
-                                                    <div class="row">
-                                                        <div class="col-md-1">
-                                                            <i class="fa fa-phone"></i>
+                                                    <div class="detail-info">
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <p>
+                                                                    Email:
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-md-9">
+                                                                {{ $b->email }}
+                                                            </div>
                                                         </div>
-                                                        <div class="col-md-4">
-                                                            <p>
-                                                                Phone:
-                                                            </p>
+                                                    </div>
+                                                    <div class="detail-info">
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <p>
+                                                                    Phone:
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-md-9">
+                                                                {{ $b->phone }}
+                                                            </div>
                                                         </div>
-                                                        <div class="col-md-7">
-                                                            +123-456-789
+                                                    </div>
+                                                    <div class="detail-info">
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <p>
+                                                                    Status:
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-md-9">
+                                                                {{ $status }}
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-2 col-md-12">
-                                            <div class="booking-action">
-                                                <a class="btn-message bookbtn" href="#">
-                                                    Mesage
-                                                </a>
-                                                <a class="btn-apreove bookbtn" href="#">
-                                                    Aprove
-                                                </a>
-                                                <a class="btn-cancle bookbtn" href="#">
-                                                    Cancle
-                                                </a>
+                                            <div class="col-lg-2 col-md-12">
+                                                @if ($b->status == 0)
+                                                    <div class="booking-action">
+                                                        <a class="btn-cancle bookbtn" href="#">
+                                                            Batalkan
+                                                        </a>
+                                                    </div>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="booking-info">
-                                    <div class="row">
-                                        <div class="col-lg-2 col-md-12">
-                                            <div class="booking-date">
-                                                <p class="date">
-                                                    15
-                                                </p>
-                                                <p class="month">
-                                                    august
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-8 col-md-12">
-                                            <div class="booking-detail">
-                                                <h3>
-                                                    Restuarent Details
-                                                </h3>
-                                                <div class="detail-info">
-                                                    <div class="row">
-                                                        <div class="col-md-1">
-                                                            <i class="fa fa-calendar-check-o"></i>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <p>
-                                                                booking date:
-                                                            </p>
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            28:12:2021 at 3:20 AM
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="detail-info">
-                                                    <div class="row">
-                                                        <div class="col-md-1">
-                                                            <i class="fa fa-sticky-note"></i>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <p>
-                                                                booking details:
-                                                            </p>
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            28:12:2021 at 3:20 AM
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="detail-info">
-                                                    <div class="row">
-                                                        <div class="col-md-1">
-                                                            <i class="fa fa-user-secret"></i>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <p>
-                                                                client:
-                                                            </p>
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            Monica smith
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="detail-info">
-                                                    <div class="row">
-                                                        <div class="col-md-1">
-                                                            <i class="fa fa-envelope"></i>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <p>
-                                                                Email:
-                                                            </p>
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            example@example.com
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="detail-info">
-                                                    <div class="row">
-                                                        <div class="col-md-1">
-                                                            <i class="fa fa-phone"></i>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <p>
-                                                                Phone:
-                                                            </p>
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            +123-456-789
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-2 col-md-12">
-                                            <div class="booking-action">
-                                                <a class="btn-message bookbtn" href="#">
-                                                    Mesage
-                                                </a>
-                                                <a class="btn-apreove bookbtn" href="#">
-                                                    Aprove
-                                                </a>
-                                                <a class="btn-cancle bookbtn" href="#">
-                                                    Cancle
-                                                </a>
-                                            </div>
+                                    <div class="clearfix"></div>
+                                @empty
+                                    <div class="booking-info">
+                                        <div class="text-center">
+                                            <h4>Belum ada booking yang dilakukan</h4>
                                         </div>
                                     </div>
-                                </div>
+                                @endforelse
                             </div>
                         </div>
                     </div>
