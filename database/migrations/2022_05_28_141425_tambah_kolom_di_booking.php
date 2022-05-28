@@ -2,10 +2,9 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWilayahMigration extends Migration
+class TambahKolomDiBooking extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +13,9 @@ class CreateWilayahMigration extends Migration
      */
     public function up()
     {
-        // ini_set('memory_limit', '-1');
-        // DB::unprepared(file_get_contents("link/to/dump.sql"));
+        Schema::table('bookings', function (Blueprint $table) {
+            $table->string('payment_type')->after('total_price')->nullable();
+        });
     }
 
     /**
@@ -25,6 +25,8 @@ class CreateWilayahMigration extends Migration
      */
     public function down()
     {
-        // Schema::dropIfExists('wilayah_migration');
+        Schema::table('bookings', function (Blueprint $table) {
+            $table->dropColumn('payment_type');
+        });
     }
 }

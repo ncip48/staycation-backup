@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Carbon\Carbon;
+use DateTime;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
@@ -35,7 +37,7 @@ class AppServiceProvider extends ServiceProvider
             // return Carbon::parse($expression)->translatedFormat('l, d F Y');
         });
         Blade::directive('datewithtime', function ($expression) {
-            $a = "<?php echo ($expression)->format('l, d F Y - h:i'); ?>";
+            $a = "<?php echo ($expression)->format('l, d F Y - H:i'); ?>";
             return $a;
             // return Carbon::parse($expression)->translatedFormat('l, d F Y');
         });
@@ -53,6 +55,12 @@ class AppServiceProvider extends ServiceProvider
             $a = "<?php echo ($expression)->format('F'); ?>";
             return $a;
             // return Carbon::parse($expression)->translatedFormat('l, d F Y');
+        });
+
+        Blade::directive('datetime2', function ($expression) {
+            $date = new DateTime($expression);
+            $result = $date->format('Y-m-d H:i:s');
+            return Carbon::createFromFormat('Y-m-d H:i:s', $result)->locale('id')->isoFormat('dddd, D MMM Y');
         });
     }
 }

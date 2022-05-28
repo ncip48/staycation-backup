@@ -324,6 +324,7 @@
                                             <input type="hidden" name="date_ends" class="input-field" id="dateend">
                                             <input type="hidden" placeholder="0" value="0" name="total_price" readonly
                                                 id="total_price">
+                                            <input type="hidden" placeholder="0" value="0" name="total" readonly id="total">
                                             <input type="hidden" value="{{ $user }}" id="user_full">
                                             </h4>
                                             <div class="col-lg-12">

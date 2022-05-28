@@ -27,6 +27,9 @@ Route::get('/detail', [App\Http\Controllers\ProductController::class, 'detail'])
 Route::get('/search', [App\Http\Controllers\ProductController::class, 'search'])->name('search');
 Route::post('/transaction', [App\Http\Controllers\BookingController::class, 'index'])->name('transaction');
 Route::get('/booking', [App\Http\Controllers\BookingController::class, 'show'])->name('show');
+Route::post('/booking/cancel', [App\Http\Controllers\BookingController::class, 'cancel'])->name('cancel');
+Route::post('/booking/payment', [App\Http\Controllers\BookingController::class, 'payment'])->name('payment');
+Route::post('/booking/proof', [App\Http\Controllers\BookingController::class, 'proof'])->name('proof');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
