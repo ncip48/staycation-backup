@@ -50,7 +50,7 @@ $(function () {
         trf_bank = $("#trf_bank").prop("checked");
         if (trf_bank) {
             // alert("Checkbox is checked.");
-            // $("#pay-button").prop("disabled", false);
+            $("#pay-button").prop("disabled", true);
             $("#trf_bank").prop("indeterminate", true);
             callApiBank();
             $("#payment_type").val("bank");
@@ -192,7 +192,7 @@ $(function () {
 
         var price = $("#price").val();
         var finalPrice = formatRupiah(Number(actual) * Number(price));
-        $("#duration").val(diffDays);
+        $("#duration").val(actual);
         $("#total_price").val(finalPrice);
         $("#total-div").html(finalPrice);
     });
@@ -205,12 +205,13 @@ $(function () {
         const secondDate = new Date(date_end);
 
         let diffDays = Math.round((secondDate - firstDate) / oneDay);
+        // diffDays = 0;
 
         let actual = diffDays < 0 ? 0 : diffDays;
 
         var price = $("#price").val();
         var finalPrice = formatRupiah(Number(actual) * Number(price));
-        $("#duration").val(diffDays);
+        $("#duration").val(actual);
         $("#total_price").val(finalPrice);
         $("#total").val(Number(actual) * Number(price));
         $("#total-div").html(finalPrice);
