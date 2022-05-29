@@ -24971,6 +24971,22 @@ Myaccount
     border: 0px;
 }
 
+button.close {
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    -webkit-appearance: none;
+}
+
+.close {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+}
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
     .blog-sidebar .blog-popular li.blog-card-sm .blog-img-sm img {
         max-width: 85px;

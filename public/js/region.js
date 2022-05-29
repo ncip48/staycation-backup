@@ -130,6 +130,16 @@ $(function () {
         }
     });
 
+    $(document).on("click", "#btn-edit-profile", function (event) {
+        event.preventDefault();
+        $("#exampleModal").modal("show");
+    });
+
+    $(document).on("click", "#btn-profile-close", function (event) {
+        event.preventDefault();
+        $("#exampleModal").modal("hide");
+    });
+
     $.ajax({
         type: "GET",
         url: "http://dev.farizdotid.com/api/daerahindonesia/provinsi",

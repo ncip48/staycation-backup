@@ -37,4 +37,5 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/edit-profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('update-profile');
     Route::post('/cancel-booking', [App\Http\Controllers\BookingController::class, 'cancel'])->name('cancel-booking');
     Route::post('/review', [App\Http\Controllers\ReviewController::class, 'create'])->name('create-review');
+    Route::post('/edit-photo', [App\Http\Controllers\ProfileController::class, 'changePhoto'])->name('update-photo');
 });

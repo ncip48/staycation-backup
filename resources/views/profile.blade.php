@@ -57,7 +57,7 @@
                                                 $foto = $user->picture;
                                             }
                                         @endphp
-                                        <img src={{ $foto }} style="height: 250px;widht:250px">
+                                        <img src={{ $foto }} style="height: 250px;width:250px;object-fit:cover">
                                     </div>
                                     <div class="col-lg-9 col-md-7">
                                         <div class="info">
@@ -124,7 +124,7 @@
                                     <div class="col-lg-3 col-md-5">
                                         <div class="d-flex justify-content-between">
                                             <div class="text-right mt-4">
-                                                <a href="{{ url('edit-profile') }}" class="button p-3">Ganti
+                                                <a id="btn-edit-profile" class="button p-3">Ganti
                                                     Foto</a>
                                             </div>
                                             <div class="text-right mt-4">
@@ -297,6 +297,34 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form method="POST" action="{{ url('edit-photo') }}" style="margin-block-end: 0em;flex:1"
+                    class="me-3" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Foto Profile</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                            id="btn-profile-close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input class="form-control-file" type="file" name="image" id="image">
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-dismiss="modal" id="btn-profile-close">Close</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

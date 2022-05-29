@@ -35,4 +35,24 @@ class ProfileController extends Controller
         $user->update($request->all());
         return redirect()->route('profile')->with('success', 'Profile updated successfully');
     }
+
+    public function changePhoto(Request $request)
+    {
+        try {
+            $fileimage = $request->file('image');
+            $nameimage = time() . '.' . $fileimage->getClientOriginalExtension();
+            $fileimage->move(public_path('images'), $nameimage);
+
+            $fullPathUriImage = '/images/' . $nameimage;
+
+            $id = Auth::user()->id;
+            $user = User::where('id', $id)->first();
+            $user->picture = $fullPathUriImage;
+            $user->save();
+
+            return redirect()->route('profile')->with('success', 'Photo updated successfully');
+        } catch (\Throwable $th) {
+            return redirect()->route('profile')->with('error', 'Failed to update photo');
+        }
+    }
 }
