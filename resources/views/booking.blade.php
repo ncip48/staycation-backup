@@ -197,7 +197,7 @@
             <form method="POST" action="{{ url('booking/proof') }}" style="margin-block-end: 0em;flex:1"
                 class="me-3" enctype="multipart/form-data">
                 @csrf
-                @if ($result->status == 2 && $proof == 0)
+                @if ($result->status == 2 && $proof == 0 && $result->payment_type != 'cash')
                     <div class="bg-white shadow-sm rounded p-3 p-sm-4 mb-4" id="box-payment">
                         <div class="row">
                             <div class="col-sm font-weight-600">Upload Bukti Pembayaran</div>
@@ -211,7 +211,7 @@
                 @endif
 
                 {{-- jika udah bayar tinggal upload bukti --}}
-                @if ($result->status == 2 && $proof == 0)
+                @if ($result->status == 2 && $proof == 0 && $result->payment_type != 'cash')
                     <div class="mt-4 mb-0 d-flex justify-content-between">
                         <button class="btn btn-payment me-3" type="submit">Upload Bukti Pembayaran</button>
                     </div>

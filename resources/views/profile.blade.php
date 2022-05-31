@@ -57,7 +57,7 @@
                                                 $foto = $user->picture;
                                             }
                                         @endphp
-                                        <img src={{ $foto }} style="height: 250px;width:250px;object-fit:cover">
+                                        <img src={{ $foto }} style="height: 250px;width:250px;object-fit:contain">
                                     </div>
                                     <div class="col-lg-9 col-md-7">
                                         <div class="info">
@@ -124,7 +124,8 @@
                                     <div class="col-lg-3 col-md-5">
                                         <div class="d-flex justify-content-between">
                                             <div class="text-right mt-4">
-                                                <a id="btn-edit-profile" class="button p-3">Ganti
+                                                <a id="btn-edit-profile" style="cursor: pointer"
+                                                    class="button p-3">Ganti
                                                     Foto</a>
                                             </div>
                                             <div class="text-right mt-4">
