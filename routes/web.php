@@ -30,6 +30,7 @@ Route::get('/booking', [App\Http\Controllers\BookingController::class, 'show'])-
 Route::post('/booking/cancel', [App\Http\Controllers\BookingController::class, 'cancel'])->name('cancel');
 Route::post('/booking/payment', [App\Http\Controllers\BookingController::class, 'payment'])->name('payment');
 Route::post('/booking/proof', [App\Http\Controllers\BookingController::class, 'proof'])->name('proof');
+Route::get('/about', [App\Http\Controllers\SiteController::class, 'about'])->name('about');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');

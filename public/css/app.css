@@ -13977,7 +13977,7 @@ img.mfp-img {
     border-radius: 50%;
 }
 
-  
+
   .bxs-color:before {
     content: "\ef39";
   }
@@ -18778,7 +18778,7 @@ img.mfp-img {
   .bxs-zoom-out:before {
     content: "\ef0b";
   }
-  
+
 @charset "UTF-8";
 @font-face {
     font-family: flaticon;
@@ -25819,5 +25819,10 @@ button.close {
     filter: drop-shadow(-2px -2px 2px #888);
 }
 
+.newsletter-wrapper form {
+    margin:0px;
+}
 
-
+.newsletter-wrapper .newsletter-input input {
+    margin:0px;
+}

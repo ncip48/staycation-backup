@@ -33,22 +33,29 @@ $site = App\Models\Site::first();
                                     <i class="flaticon-user"></i>
                                     <div class="account-dropdown">
                                         <ul>
-                                            <li class="account-el">
-                                                <i class="bx bx-user-pin"></i>
-                                                <a href="#">Sign in</a>
-                                            </li>
-                                            <li class="account-el">
-                                                <i class="bx bxs-user-account"></i>
-                                                <a href="/profile">My Account</a>
-                                            </li>
-                                            <li class="account-el">
-                                                <i class="bx bx-extension"></i>
-                                                <a href="#">Settings</a>
-                                            </li>
-                                            <li class="account-el">
-                                                <i class="bx bx-log-in-circle"></i>
-                                                <a href="#">Log out</a>
-                                            </li>
+                                            @auth
+                                                <li class='account-el'>
+                                                    <i class='bx bxs-user-account'></i>
+                                                    <a href='/profile'>My Account</a>
+                                                </li>
+                                                <li class='account-el'>
+                                                    <i class='bx bx-log-in-circle'></i>
+                                                    <form method='POST' action='{{ route('logout') }}'
+                                                        style="margin-block-end: 0px">
+                                                        @csrf
+                                                        <button type='submit' class="asdf">Logout</button>
+                                                    </form>
+                                                </li>
+                                            @else
+                                                <li class='account-el'>
+                                                    <i class='bx bx-user-pin'></i>
+                                                    <a href='/login'>Login</a>
+                                                </li>
+                                                <li class='account-el'>
+                                                    <i class='bx bx-user-pin'></i>
+                                                    <a href='/register'>Register</a>
+                                                </li>
+                                            @endauth
                                         </ul>
                                     </div>
                                 </div>
@@ -149,9 +156,9 @@ $site = App\Models\Site::first();
                             <div class="sidebar-contact">
                                 <ul>
                                     <li class="sidebar-single-contact"><i class="bx bxs-phone"></i> <a
-                                            href="tel:+17632275032">+1 763-227-5032</a></li>
+                                            href="tel:+17632275032">{{ $site->phone }}</a></li>
                                     <li class="sidebar-single-contact"><i class="bx bxs-envelope"></i><a
-                                            href="mailto:info@example.com">info@example.com</a></li>
+                                            href="mailto:info@example.com">{{ $site->email }}</a></li>
                                 </ul>
                             </div>
                         </nav>
@@ -195,7 +202,8 @@ $site = App\Models\Site::first();
                                 <li><a href="{{ $site->instagram }}" target="_blank"><i
                                             class="bx bxl-instagram"></i></a>
                                 </li>
-                                <li><a href="{{ $site->twitter }}" target="_blank"><i class="bx bxl-twitter"></i></a>
+                                <li><a href="{{ $site->twitter }}" target="_blank"><i
+                                            class="bx bxl-twitter"></i></a>
                                 </li>
                                 <li><a href="{{ $site->whatsapp }}" target="_blank"><i
                                             class="bx bxl-whatsapp"></i></a>
