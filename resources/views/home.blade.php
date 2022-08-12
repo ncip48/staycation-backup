@@ -90,7 +90,7 @@
                                 <i class="flaticon-arrival"></i>
                                 </i>{{ $pr->city_name }}
                             </h5>
-                            <strong>@currency($pr->price)<span>
+                            <strong>@currency($pr->price)</strong>
                         </div>
                     </div>
                 @endforeach
