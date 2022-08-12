@@ -21,4 +21,10 @@ class SiteController extends Controller
         $data['site'] = Site::first();
         return view('about', $data);
     }
+
+    public function contact()
+    {
+        $data['site'] = Site::first();
+        return view('contact', $data);
+    }
 }

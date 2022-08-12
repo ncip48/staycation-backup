@@ -31,6 +31,8 @@ Route::post('/booking/cancel', [App\Http\Controllers\BookingController::class, '
 Route::post('/booking/payment', [App\Http\Controllers\BookingController::class, 'payment'])->name('payment');
 Route::post('/booking/proof', [App\Http\Controllers\BookingController::class, 'proof'])->name('proof');
 Route::get('/about', [App\Http\Controllers\SiteController::class, 'about'])->name('about');
+Route::get('/contact', [App\Http\Controllers\SiteController::class, 'contact'])->name('contact');
+Route::post('/contact', [App\Http\Controllers\ContactController::class, 'create_contact'])->name('create_contact');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');

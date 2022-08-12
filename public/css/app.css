@@ -23722,6 +23722,7 @@ li.package-card-sm .package-info h5 span {
     margin-bottom: 0;
 }
 .contact-inputs .contact-form input[type="submit"]:hover {
+    color: white !important;
     background: #304f47;
 }
 .form-group .input-field {
@@ -25825,4 +25826,8 @@ button.close {
 
 .newsletter-wrapper .newsletter-input input {
     margin:0px;
+}
+
+.form-contact:focus {
+    color: white !important;
 }
