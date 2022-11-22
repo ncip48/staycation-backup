@@ -34,8 +34,8 @@
                             <div class="package-details">
                                 <div class="package-info">
                                     <h3 style="padding: 0px">
-                                        <a
-                                            href="{{ url('detail?id=' . \Illuminate\Support\Facades\Crypt::encrypt($pr->id)) . '&date=' . $date }}">{{ $pr->name }}</a>
+                                        <a href="{{ url('detail?id=' . \Illuminate\Support\Facades\Crypt::encrypt($pr->id)) . '&date=' . $date }}"
+                                            id="link-hotel">{{ $pr->name }}</a>
                                     </h3>
                                     <h5>@currency($pr->price)</h5>
                                 </div>

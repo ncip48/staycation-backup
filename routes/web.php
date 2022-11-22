@@ -42,3 +42,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/review', [App\Http\Controllers\ReviewController::class, 'create'])->name('create-review');
     Route::post('/edit-photo', [App\Http\Controllers\ProfileController::class, 'changePhoto'])->name('update-photo');
 });
+
+//testing
+Route::prefix('_testing')
+    ->middleware(['testing'])
+    ->group(__DIR__ . '/_testing.php');

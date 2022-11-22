@@ -1,5 +1,5 @@
 @php
-$site = App\Models\Site::first();
+    $site = App\Models\Site::first();
 @endphp
 
 <html lang="en">
@@ -49,7 +49,7 @@ $site = App\Models\Site::first();
                                             @else
                                                 <li class='account-el'>
                                                     <i class='bx bx-user-pin'></i>
-                                                    <a href='/login'>Login</a>
+                                                    <a href='{{ url('login') }}'>Login</a>
                                                 </li>
                                                 <li class='account-el'>
                                                     <i class='bx bx-user-pin'></i>
@@ -142,7 +142,7 @@ $site = App\Models\Site::first();
                                             @else
                                                 <li class='account-el'>
                                                     <i class='bx bx-user-pin'></i>
-                                                    <a href='/login'>Login</a>
+                                                    <a href='{{ url('login') }}'>Login</a>
                                                 </li>
                                                 <li class='account-el'>
                                                     <i class='bx bx-user-pin'></i>
